@@ -1,15 +1,39 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 import Avatar from "antd/lib/avatar/avatar";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import React from "react";
+import React, { useState } from "react";
 import { createUseStyles } from "react-jss";
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 function HomeHeader() {
   const classes = useStyles();
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const screens = useBreakpoint();
   const isMd = screens.md;
+
+  const menu = (
+    <Menu className={classes.menu}>
+      <Menu.Item>
+        <Link to="/sign-up">
+          <Button size="small" type="link">
+            Sign Up
+          </Button>
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/sign-in">
+          <Button size="small" type="primary" shape="round">
+            Sign In
+          </Button>
+        </Link>
+      </Menu.Item>
+    </Menu>
+  );
+
+  const toggleDropdown = () =>
+    !isMd && setIsDropdownVisible(!isDropdownVisible);
 
   return (
     <div className={classes.homeHeader}>
@@ -19,19 +43,27 @@ function HomeHeader() {
       <div className={classes.headerRight}>
         {isMd && (
           <>
-            <Button size={isMd ? "middle" : "small"} type="line">
-              Sign Up
-            </Button>
-            <Button
-              size={isMd ? "middle" : "small"}
-              type="primary"
-              shape="round"
-            >
-              Sign In
-            </Button>
+            <Link to="/sign-up">
+              <Button>Sign Up</Button>
+            </Link>
+            <Link to="/sign-in">
+              <Button type="primary" shape="round">
+                Sign In
+              </Button>
+            </Link>
           </>
         )}
-        <Avatar size={isMd ? "large" : "middle"} icon={<UserOutlined />} />
+        <Dropdown
+          overlay={menu}
+          visible={isDropdownVisible}
+          onVisibleChange={(visible) => !isMd && setIsDropdownVisible(visible)}
+        >
+          <Avatar
+            size={isMd ? "large" : "middle"}
+            icon={<UserOutlined />}
+            onClick={toggleDropdown}
+          />
+        </Dropdown>
       </div>
       <div className={classes.searchBarWrapper}>
         <SearchBar />
@@ -77,6 +109,13 @@ const useStyles = createUseStyles(() => ({
     "& .ant-avatar": {
       margin: [0, 20],
       backgroundColor: "#87d068",
+    },
+  },
+  menu: {
+    "& .ant-btn": {
+      width: 100,
+      fontWeight: 600,
+      border: "none",
     },
   },
   searchBarWrapper: { width: "100%", padding: [5, 10, 20] },

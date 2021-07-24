@@ -2,6 +2,7 @@ import { RightOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React from "react";
 import { createUseStyles } from "react-jss";
+import { Link } from "react-router-dom";
 import demoImg from "../assets/demo-image.jpg";
 import FadeBottom from "./FadeBottom";
 
@@ -11,18 +12,20 @@ function CategoryCard() {
   return (
     <div className={classes.categoryCard}>
       <FadeBottom />
-      <div className={classes.cardContent}>
-        <div className={classes.cardTitle}>Shaam k Snacks</div>
-        <div className={classes.cardDescription}>
-          Vadpav, Samosa, Bhajiya...
+      <Link to="/c/shaam-k-snacks">
+        <div className={classes.cardContent}>
+          <div className={classes.cardTitle}>Shaam k Snacks</div>
+          <div className={classes.cardDescription}>
+            Vadpav, Samosa, Bhajiya...
+          </div>
         </div>
-      </div>
-      <Button
-        type="default"
-        icon={<RightOutlined />}
-        size="large"
-        className={classes.openCategoryButton}
-      />
+        <Button
+          type="default"
+          icon={<RightOutlined />}
+          size="large"
+          className={classes.openCategoryButton}
+        />
+      </Link>
     </div>
   );
 }

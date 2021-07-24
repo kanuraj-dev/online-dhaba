@@ -64,6 +64,7 @@ const useStyles = createUseStyles(() => ({
     width: "100%",
     transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
     paddingBottom: 5,
+    zIndex: 1,
 
     "&:hover": {
       borderRadius: 10,
@@ -83,7 +84,6 @@ const useStyles = createUseStyles(() => ({
     position: "relative",
   },
   productImg: {
-    zIndex: 1,
     width: "100%",
     height: "100%",
     objectFit: "cover",
