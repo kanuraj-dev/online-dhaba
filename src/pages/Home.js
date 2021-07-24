@@ -1,4 +1,3 @@
-import { Divider } from "antd";
 import React from "react";
 import { createUseStyles } from "react-jss";
 import Footer from "../components/Footer";
@@ -11,7 +10,7 @@ function Home() {
   const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.homePage}>
       <HomeHeader />
       <TopCategories />
       <ProductsSection title="Trending Products Near You..." />
@@ -22,6 +21,6 @@ function Home() {
   );
 }
 
-const useStyles = createUseStyles(() => ({}));
+const useStyles = createUseStyles(() => ({ homePage: {} }));
 
 export default Home;

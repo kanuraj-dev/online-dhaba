@@ -93,8 +93,8 @@ const useStyles = createUseStyles(() => ({
       },
       "& .ant-avatar": { margin: [0, 15] },
     },
+    searchBarWrapper: { padding: [10, 10, 15] },
   },
-  searchBarWrapper: { padding: [10, 10, 15] },
 }));
 
 export default HomeHeader;

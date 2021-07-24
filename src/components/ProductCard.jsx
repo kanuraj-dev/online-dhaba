@@ -15,7 +15,11 @@ function ProductCard() {
   return (
     <div className={classes.productCard}>
       <div className={classes.productImgWrapper}>
-        <img src={demoImg} className={classes.productImg} />
+        <img
+          src={demoImg}
+          className={classes.productImg}
+          alt="Rajasthani Khamman"
+        />
         <FadeBottom small />
         <Button
           type="default"
