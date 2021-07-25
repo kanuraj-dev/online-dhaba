@@ -90,6 +90,7 @@ function SignupForm({ onSubmit }) {
             style={{
               background: "rgb(255, 165, 0,0.8)",
               border: "none",
+              marginBottom: 10,
             }}
           >
             Sign Up

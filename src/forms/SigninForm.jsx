@@ -66,6 +66,7 @@ function SigninForm({ onSubmit }) {
             style={{
               background: "rgb(248, 131, 121,0.9)",
               border: "none",
+              marginBottom: 10,
             }}
           >
             Sign In
