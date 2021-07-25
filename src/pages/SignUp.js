@@ -3,15 +3,20 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import React from "react";
 import { createUseStyles } from "react-jss";
 import demoImg from "../assets/demo-image.jpg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SignupForm from "../forms/SignupForm";
 
 function SignUp() {
+  const history = useHistory();
   const screen = useBreakpoint();
   const isMd = screen.md;
   const classes = useStyles({ isMd: isMd });
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    setTimeout(() => {
+      history.push("/");
+    }, 3000);
+  };
 
   return (
     <Row className={classes.signUpPage}>

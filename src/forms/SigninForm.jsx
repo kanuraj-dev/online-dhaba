@@ -84,7 +84,7 @@ function SigninForm({ onSubmit }) {
 
 const useStyles = createUseStyles(() => ({
   formWrappper: {
-    padding: ({ isMd }) => (isMd ? "15px 20px 20px" : "10px 20px 20px"),
+    padding: ({ isMd }) => (isMd ? "15px 20px 10px" : "10px 20px 10px"),
 
     "& .ant-input-affix-wrapper": {
       paddingLeft: "0px !important",
