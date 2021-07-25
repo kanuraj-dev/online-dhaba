@@ -7,13 +7,13 @@ import HomeHeader from "../components/HomeHeader";
 import Loader from "../components/Loader";
 import ProductsSection from "../components/ProductsSection";
 
-function Category() {
+function Search() {
   const {
-    params: { categoryName },
+    params: { searchValue },
   } = useRouteMatch() || {};
   const classes = useStyles();
-  const screens = useBreakpoint();
   const [loading, setLoading] = useState(true);
+  const screens = useBreakpoint();
   const isMd = screens.md;
 
   useEffect(() => {
@@ -23,16 +23,16 @@ function Category() {
   }, []);
 
   return (
-    <div className={classes.categoryPage}>
+    <div className={classes.searchPage}>
       <HomeHeader />
       <div className={classes.pageContent}>
         {!loading ? (
           <ProductsSection
             title={
               <>
-                {isMd && "Showing Products In This"} Category :{" "}
-                <b className={classes.categoryName}>
-                  {categoryName.split("-").join(" ")}
+                {isMd && "Showing Search"} Results For :{" "}
+                <b className={classes.searchValue}>
+                  {searchValue.split("-").join(" ")}
                 </b>
               </>
             }
@@ -47,15 +47,16 @@ function Category() {
 }
 
 const useStyles = createUseStyles(() => ({
+  searchPage: {},
   pageContent: {
     minHeight: "60vh",
     paddingBottom: "4rem",
   },
-  categoryName: {
+  searchValue: {
     textTransform: "capitalize",
     fontWeight: 700,
     color: "#ff5546",
   },
 }));
 
-export default Category;
+export default Search;

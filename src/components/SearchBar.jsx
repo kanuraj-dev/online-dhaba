@@ -1,10 +1,29 @@
 import { Col, Divider, Input, Row } from "antd";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createUseStyles } from "react-jss";
 import { EnvironmentFilled, SearchOutlined } from "@ant-design/icons";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
 function SearchBar() {
+  const {
+    params: { searchValue },
+  } = useRouteMatch() || {};
   const classes = useStyles();
+  const history = useHistory();
+  const [searchInputValue, setSearchInputValue] = useState("");
+
+  useEffect(() => {
+    if (searchValue !== undefined) {
+      setSearchInputValue(searchValue.split("-").join(" "));
+    }
+  }, [searchValue]);
+
+  const onSearch = () => {
+    if (searchInputValue !== "") {
+      let searchString = searchInputValue.split(" ").join("-");
+      history.push(`/s/${searchString}`);
+    }
+  };
 
   return (
     <Row className={classes.searchInput} justify="center" align="middle">
@@ -13,6 +32,7 @@ function SearchBar() {
           type="primary"
           prefix={<EnvironmentFilled />}
           placeholder="Location.."
+          spellCheck={false}
         />
       </Col>
       <Col xs={1} md={2} style={{ textAlign: "center" }}>
@@ -22,6 +42,10 @@ function SearchBar() {
         <Input
           prefix={<SearchOutlined />}
           placeholder="Find food items near uhh.."
+          value={searchInputValue}
+          onChange={(e) => setSearchInputValue(e.target.value)}
+          onPressEnter={onSearch}
+          spellCheck={false}
         />
       </Col>
     </Row>

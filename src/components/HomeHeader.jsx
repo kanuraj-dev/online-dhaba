@@ -37,9 +37,11 @@ function HomeHeader() {
 
   return (
     <div className={classes.homeHeader}>
-      <div className={classes.headerTitle}>
-        Online<b>Dhaba</b>
-      </div>
+      <Link to="/">
+        <div className={classes.headerTitle}>
+          Online<b>Dhaba</b>
+        </div>
+      </Link>
       <div className={classes.headerRight}>
         {isMd && (
           <>

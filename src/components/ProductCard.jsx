@@ -6,6 +6,7 @@ import {
 import { Button, Col, Row } from "antd";
 import React from "react";
 import { createUseStyles } from "react-jss";
+import { Link } from "react-router-dom";
 import demoImg from "../assets/food-demo-image.jpg";
 import FadeBottom from "./FadeBottom";
 
@@ -44,14 +45,16 @@ function ProductCard() {
             <div>Pack of 2</div>
           </Col>
           <Col span={11} className={classes.orderButton}>
-            <Button
-              size="small"
-              block
-              type="primary"
-              icon={<ArrowRightOutlined />}
-            >
-              Get Me This
-            </Button>
+            <Link to="/p/1">
+              <Button
+                size="small"
+                block
+                type="primary"
+                icon={<ArrowRightOutlined />}
+              >
+                Get Me This
+              </Button>
+            </Link>
           </Col>
         </Row>
       </div>
