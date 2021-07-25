@@ -4,6 +4,7 @@ import { Button, Input } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { Formik } from "formik";
 import SignupFormSchema from "../schema/SignupFormSchema";
+import { Link } from "react-router-dom";
 
 function SignupForm({ onSubmit }) {
   const screen = useBreakpoint();
@@ -93,9 +94,11 @@ function SignupForm({ onSubmit }) {
           >
             Sign Up
           </Button>
-          <Button block href="/sign-in" type="link">
-            Already have an account? Sign IN
-          </Button>
+          <Link to="/sign-in">
+            <Button block type="link">
+              Already have an account? Sign IN
+            </Button>
+          </Link>
         </form>
       )}
     </Formik>
